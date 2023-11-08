@@ -42,6 +42,18 @@ namespace OpenAI_API.Images
 		[JsonProperty("response_format"), JsonConverter(typeof(ImageResponseFormat.ImageResponseJsonConverter))]
 		public ImageResponseFormat ResponseFormat { get; set; }
 
+	    /// <summary>
+	///     A model to use.
+	/// </summary>
+	[JsonProperty("model")]
+	public string Model { get; set; }
+	
+	/// <summary>
+	///     Either empty or "hd" for dalle3.
+	/// </summary>
+	[JsonProperty("quality")]
+	public string? Quality { get; set; }
+	    
 		/// <summary>
 		/// Cretes a new, empty <see cref="ImageGenerationRequest"/>
 		/// </summary>
@@ -63,13 +75,17 @@ namespace OpenAI_API.Images
 			int? numOfImages = 1,
 			ImageSize size = null,
 			string user = null,
-			ImageResponseFormat responseFormat = null)
+			ImageResponseFormat responseFormat = null,
+		        Model? model = null, 
+			string? quality = null)
 		{
 			this.Prompt = prompt;
 			this.NumOfImages = numOfImages;
 			this.User = user;
 			this.Size = size ?? ImageSize._1024;
 			this.ResponseFormat = responseFormat ?? ImageResponseFormat.Url;
+			this.Model = model?.ModelID ?? Models.Model.Dalle2.ModelID;
+        		this.Quality = quality;
 		}
 
 	}
