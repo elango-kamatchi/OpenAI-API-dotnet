@@ -164,6 +164,15 @@ namespace OpenAI_API.Models
 		/// </summary>
 		public static Model TextModerationLatest => new Model("text-moderation-latest") { OwnedBy = "openai" };
 
+		/// <summary>
+    		///     Dalle2 model. This model generates images.
+    		/// </summary>
+   		public static Model Dalle2 => new("dall-e-2") { OwnedBy = "openai" };
+
+    		/// <summary>
+    		///     Dalle2 model. This model generates images.
+    		/// </summary>
+    		public static Model Dalle3 => new("dall-e-3") { OwnedBy = "openai" };
 
 		/// <summary>
 		/// Gets more details about this Model from the API, specifically properties such as <see cref="OwnedBy"/> and permissions.
